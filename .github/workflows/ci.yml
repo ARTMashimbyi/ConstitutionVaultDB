@@ -1,31 +1,29 @@
-name: Node.js CI
+name: Run tests and upload coverage
 
-on:
-  push:
-    branches: [main]
-  pull_request:
-    branches: [main]
+on: 
+  push
 
 jobs:
   test:
+    name: Run tests and collect coverage
     runs-on: ubuntu-latest
-
     steps:
-    - name: Checkout code
-      uses: actions/checkout@v3
+      - name: Checkout
+        uses: actions/checkout@v4
+        with:
+          fetch-depth: 2
 
-    - name: Set up Node.js
-      uses: actions/setup-node@v3
-      with:
-        node-version: '18' # or whatever version you're using
+      - name: Set up Node
+        uses: actions/setup-node@v4
 
-    - name: Install dependencies
-      run: npm install
+      - name: Install dependencies
+        run: npm install
 
-    - name: Run tests with coverage
-      run: npm test -- --coverage
+      - name: Run tests
+        run: npx jest --coverage
 
-    - name: Upload coverage reports to Codecov
-      uses: codecov/codecov-action@v5
-      with:
-        token: ${{ secrets.CODECOV_TOKEN }} # Set this secret in your GitHub repo settings
+      - name: Upload results to Codecov
+        uses: codecov/codecov-action@v5
+        with:
+          token: ${{ secrets.CODECOV_TOKEN }}
+          slug: ARTMashimbyi/ConstitutionVaultDB
