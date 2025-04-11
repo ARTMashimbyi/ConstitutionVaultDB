@@ -3,13 +3,23 @@ const express = require('express');
 const multer = require('multer');
 
 // ✅ Mock the db module
-jest.mock('../../db', () => ({
-  sql: {
-    connect: jest.fn().mockResolvedValue(),
-    query: jest.fn().mockResolvedValue({})  // simulate successful insert
-  },
-  config: {}
-}));
+jest.mock('../../db', () => {
+    const inputMock = jest.fn().mockReturnThis(); // enables chaining
+    const queryMock = jest.fn().mockResolvedValue({});
+  
+    return {
+      sql: {
+        connect: jest.fn().mockResolvedValue({
+          request: jest.fn(() => ({
+            input: inputMock,
+            query: queryMock
+          }))
+        })
+      },
+      config: {}
+    };
+  });
+  
 
 // ✅ Set up multer with in-memory storage
 const storage = multer.memoryStorage();
