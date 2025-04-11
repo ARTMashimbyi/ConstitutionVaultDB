@@ -29,5 +29,5 @@ jobs:
 
     - name: Upload coverage to Coveralls (or Codecov)
       run: |
-        npm install coveralls
-        cat ./coverage/lcov-report/index.html | coveralls
+        npm install codecov
+        cat ./coverage/lcov-report/index.html | codecov
