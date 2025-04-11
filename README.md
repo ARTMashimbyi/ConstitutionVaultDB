@@ -1,5 +1,7 @@
 # ConstitutionVaultDB
 
+[![codecov](https://codecov.io/gh/ARTMashimbyi/ConstitutionVaultDB/branch/main/graph/badge.svg)](https://codecov.io/gh/ARTMashimbyi/ConstitutionVaultDB)
+
 # 📚 Constitution Vault - Backend
 
 ## This is the backend for **Constitution Vault**, a document management web application
