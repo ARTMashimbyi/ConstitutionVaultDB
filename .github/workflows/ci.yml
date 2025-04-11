@@ -2,11 +2,9 @@ name: Node.js CI
 
 on:
   push:
-    branches:
-      - main
+    branches: [main]
   pull_request:
-    branches:
-      - main
+    branches: [main]
 
 jobs:
   test:
@@ -14,12 +12,12 @@ jobs:
 
     steps:
     - name: Checkout code
-      uses: actions/checkout@v2
+      uses: actions/checkout@v3
 
     - name: Set up Node.js
-      uses: actions/setup-node@v2
+      uses: actions/setup-node@v3
       with:
-        node-version: '16'
+        node-version: '18' # or whatever version you're using
 
     - name: Install dependencies
       run: npm install
@@ -27,7 +25,7 @@ jobs:
     - name: Run tests with coverage
       run: npm test -- --coverage
 
-    - name: Upload coverage to Coveralls (or Codecov)
-      run: |
-        npm install codecov
-        cat ./coverage/lcov-report/index.html | codecov
+    - name: Upload coverage reports to Codecov
+      uses: codecov/codecov-action@v5
+      with:
+        token: ${{ secrets.CODECOV_TOKEN }} # Set this secret in your GitHub repo settings
