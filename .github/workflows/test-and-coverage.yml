@@ -16,7 +16,7 @@ jobs:
         uses: actions/setup-node@v4
 
       - name: Install dependencies
-        run: npm install
+        run: npm cache clean --force
 
       - name: Run tests with coverage
         run: npm test
