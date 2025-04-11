@@ -1,22 +1,29 @@
 name: Run tests and upload coverage
 
-on: push
+on:
+  push:
+    branches: [main]
+  pull_request:
+    branches: [main]
 
 jobs:
   test:
-    name: Run tests and collect coverage
     runs-on: ubuntu-latest
+
     steps:
       - name: Checkout
         uses: actions/checkout@v4
-        with:
-          fetch-depth: 2
 
       - name: Set up Node
         uses: actions/setup-node@v4
+        with:
+          node-version: "20" # or your desired version
 
       - name: Install dependencies
-        run: npm cache clean --force
+        run: npm install
+
+      - name: Make jest executable
+        run: chmod +x ./node_modules/.bin/jest
 
       - name: Run tests with coverage
         run: npm test
