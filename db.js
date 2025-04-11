@@ -3,8 +3,8 @@ const sql = require('mssql');
 
 const config = {
   user: 'constitutionvault',
-  password: 'Code@mash',
-  server: 'constitutionvault.database.windows.net',
+  password: 'Code@cruseders',
+  server: 'constitutionvault2.database.windows.net',
   database: 'constitutionvault',
   options: {
     encrypt: true,
