@@ -1,7 +1,6 @@
 name: Run tests and upload coverage
 
-on: 
-  push
+on: push
 
 jobs:
   test:
@@ -20,7 +19,7 @@ jobs:
         run: npm install
 
       - name: Run tests
-        run: npx jest --coverage
+        run: ./node_modules/.bin/jest --coverage
 
       - name: Upload results to Codecov
         uses: codecov/codecov-action@v5
