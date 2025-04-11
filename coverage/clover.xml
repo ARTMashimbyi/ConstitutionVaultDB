@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<coverage generated="1744395444474" clover="3.2.0">
-  <project timestamp="1744395444474" name="All files">
-    <metrics statements="48" coveredstatements="36" conditionals="4" coveredconditionals="3" methods="4" coveredmethods="3" elements="56" coveredelements="42" complexity="0" loc="48" ncloc="48" packages="1" files="2" classes="2"/>
+<coverage generated="1744395583798" clover="3.2.0">
+  <project timestamp="1744395583798" name="All files">
+    <metrics statements="48" coveredstatements="35" conditionals="4" coveredconditionals="3" methods="4" coveredmethods="3" elements="56" coveredelements="41" complexity="0" loc="48" ncloc="48" packages="1" files="2" classes="2"/>
     <file name="books.js" path="D:\2025 Work\SD\New folder\ConstitutionVaultDB\routes\books.js">
       <metrics statements="31" coveredstatements="20" conditionals="2" coveredconditionals="1" methods="3" coveredmethods="2"/>
       <line num="2" count="1" type="stmt"/>
@@ -37,7 +37,7 @@
       <line num="52" count="1" type="stmt"/>
     </file>
     <file name="upload.js" path="D:\2025 Work\SD\New folder\ConstitutionVaultDB\routes\upload.js">
-      <metrics statements="17" coveredstatements="16" conditionals="2" coveredconditionals="2" methods="1" coveredmethods="1"/>
+      <metrics statements="17" coveredstatements="15" conditionals="2" coveredconditionals="2" methods="1" coveredmethods="1"/>
       <line num="1" count="1" type="stmt"/>
       <line num="2" count="1" type="stmt"/>
       <line num="3" count="1" type="stmt"/>
@@ -51,9 +51,9 @@
       <line num="14" count="1" type="stmt"/>
       <line num="17" count="1" type="stmt"/>
       <line num="18" count="1" type="stmt"/>
-      <line num="27" count="0" type="stmt"/>
-      <line num="29" count="1" type="stmt"/>
-      <line num="30" count="1" type="stmt"/>
+      <line num="27" count="1" type="stmt"/>
+      <line num="29" count="0" type="stmt"/>
+      <line num="30" count="0" type="stmt"/>
       <line num="34" count="1" type="stmt"/>
     </file>
   </project>

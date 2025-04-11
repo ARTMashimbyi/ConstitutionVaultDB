@@ -4,21 +4,23 @@ const multer = require('multer');
 
 // ✅ Mock the db module
 jest.mock('../../db', () => {
-    const inputMock = jest.fn().mockReturnThis(); // enables chaining
+    const inputMock = jest.fn().mockReturnThis();
     const queryMock = jest.fn().mockResolvedValue({});
+  
+    const mockRequest = () => ({
+      input: inputMock,
+      query: queryMock
+    });
   
     return {
       sql: {
         connect: jest.fn().mockResolvedValue({
-          request: jest.fn(() => ({
-            input: inputMock,
-            query: queryMock
-          }))
+          request: mockRequest
         }),
-        // ✅ Mock the SQL data types used in your route
-        NVarChar: 'NVarChar',
-        Int: 'Int',
-        VarBinary: 'VarBinary'
+        // ✅ Mock data types as functions
+        NVarChar: jest.fn(() => 'NVarChar'),
+        Int: jest.fn(() => 'Int'),
+        VarBinary: jest.fn(() => 'VarBinary')
       },
       config: {}
     };
