@@ -4,7 +4,7 @@
   "description": "",
   "main": "server.js",
   "scripts": {
-    "test": "jest --coverage",
+    "test": "node --no-warnings ./node_modules/.bin/jest --coverage",
     "start": "node server.js"
   },
   "keywords": [],
