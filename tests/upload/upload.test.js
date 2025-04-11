@@ -11,9 +11,21 @@ jest.mock('../../db', () => ({
   config: {}
 }));
 
+// ✅ Set up multer with in-memory storage
+const storage = multer.memoryStorage();
+const upload = multer({ storage });
+
+// ✅ Load the actual route and override upload middleware
 const uploadRouter = require('../../routes/upload');
 const app = express();
 app.use(express.json());
+
+// ✅ Override the middleware in the router before mounting (patch if needed)
+app.use((req, res, next) => {
+  req.upload = upload.single('archiveFile');
+  next();
+});
+
 app.use('/upload', uploadRouter);
 
 describe('Upload Routes', () => {
