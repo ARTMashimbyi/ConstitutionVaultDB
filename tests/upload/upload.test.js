@@ -14,11 +14,16 @@ jest.mock('../../db', () => {
             input: inputMock,
             query: queryMock
           }))
-        })
+        }),
+        // ✅ Mock the SQL data types used in your route
+        NVarChar: 'NVarChar',
+        Int: 'Int',
+        VarBinary: 'VarBinary'
       },
       config: {}
     };
   });
+  
   
 
 // ✅ Set up multer with in-memory storage
