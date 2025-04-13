@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<coverage generated="1744395583798" clover="3.2.0">
-  <project timestamp="1744395583798" name="All files">
+<coverage generated="1744504010113" clover="3.2.0">
+  <project timestamp="1744504010113" name="All files">
     <metrics statements="48" coveredstatements="35" conditionals="4" coveredconditionals="3" methods="4" coveredmethods="3" elements="56" coveredelements="41" complexity="0" loc="48" ncloc="48" packages="1" files="2" classes="2"/>
     <file name="books.js" path="D:\2025 Work\SD\New folder\ConstitutionVaultDB\routes\books.js">
       <metrics statements="31" coveredstatements="20" conditionals="2" coveredconditionals="1" methods="3" coveredmethods="2"/>
