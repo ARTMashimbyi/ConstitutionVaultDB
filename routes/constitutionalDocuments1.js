@@ -1,5 +1,3 @@
-// Update the existing routes in constitutionalDocuments.js
-
 const express = require('express');
 const multer = require('multer');
 const path = require('path');
@@ -23,7 +21,7 @@ const upload = multer({
   limits: { fileSize: 100 * 1024 * 1024 } // 100 MB
 });
 
-// POST route to upload document
+// POST route
 router.post('/', upload.single('document'), async (req, res) => {
   const { title, date, continent, country, institution, author, category, keywords, fileType, directory } = req.body;
   const file = req.file;
@@ -47,7 +45,7 @@ router.post('/', upload.single('document'), async (req, res) => {
   }
 });
 
-// GET route for all documents
+// GET route
 router.get('/', async (req, res) => {
   try {
     await sql.connect(config);
@@ -57,28 +55,6 @@ router.get('/', async (req, res) => {
     res.json(result.recordset);
   } catch (err) {
     res.status(500).send('Error fetching documents');
-  }
-});
-
-// GET route for documents in a specific directory
-router.get('/directory', async (req, res) => {
-  const { path } = req.query;
-  
-  if (!path) {
-    return res.status(400).json({ error: 'Directory path required' });
-  }
-  
-  try {
-    await sql.connect(config);
-    const result = await sql.query`
-      SELECT * FROM constitutionalDocumentsWithDirectory 
-      WHERE directory = ${path}
-      ORDER BY createdAt DESC
-    `;
-    res.json(result.recordset);
-  } catch (err) {
-    console.error('Error fetching documents in directory:', err);
-    res.status(500).json({ error: 'Failed to fetch documents.' });
   }
 });
 
@@ -105,17 +81,17 @@ router.delete('/:id', async (req, res) => {
   }
 });
 
+
 // Save new directory
 router.post('/directory', async (req, res) => {
-  const { path, description } = req.body;
+  const { path } = req.body;
 
   if (!path) return res.status(400).json({ error: 'Directory path required' });
 
   try {
     await sql.connect(config);
     await sql.query`
-      INSERT INTO directories (path, description) 
-      VALUES (${path}, ${description || null})
+      INSERT INTO directories (path) VALUES (${path})
     `;
     res.status(200).json({ message: 'Directory saved.' });
   } catch (err) {
@@ -127,12 +103,12 @@ router.post('/directory', async (req, res) => {
 router.get('/directories', async (req, res) => {
   try {
     await sql.connect(config);
-    const result = await sql.query`SELECT * FROM directories ORDER BY path ASC`;
+    const result = await sql.query`SELECT * FROM directories ORDER BY createdAt ASC`;
     res.json(result.recordset);
   } catch (err) {
-    console.error('Error fetching directories:', err);
     res.status(500).json({ error: 'Failed to fetch directories.' });
   }
 });
+
 
 module.exports = router;
