@@ -1,7 +1,7 @@
 const express = require('express');
 const cors = require('cors');
 const helmet = require('helmet');
-const { db, storage } = require('./db.js'); 
+const { db } = require('./db.js'); 
 
 const app = express();
 const PORT = 3000;
