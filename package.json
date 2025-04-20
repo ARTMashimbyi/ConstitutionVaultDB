@@ -11,8 +11,12 @@
   "author": "",
   "license": "ISC",
   "dependencies": {
+    "@firebase/storage": "^0.13.7",
     "cors": "^2.8.5",
     "express": "^5.1.0",
+    "firebase": "^11.6.0",
+    "firebase-admin": "^13.2.0",
+    "helmet": "^8.1.0",
     "mssql": "^11.0.1",
     "multer": "^1.4.5-lts.2"
   },
