@@ -1,6 +1,6 @@
 const express = require('express');
 const cors = require('cors');
-const helmet = require('helmet');
+const helmet = require('helmet');//added for firbase
 const { db } = require('./db.js'); 
 
 const app = express();
